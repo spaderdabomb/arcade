@@ -26,12 +26,16 @@ class PlaysoundException(Exception):
     pass
 
 
-def load_sound(sound: typing.Union[str, pathlib.Path]):
+def load_sound(filename: typing.Union[str, pathlib.Path]):
     """
     Load a sound effect in memory.
     """
-    s = pyglet.media.load(str(sound), streaming=False)
+    s = pyglet.media.load(str(filename), streaming=False)
     return s
+
+
+def play_sound(sound):
+    sound.play()
 
 
 class _Player:
