@@ -32,7 +32,8 @@ if __name__ == "__main__":
           download_url="http://arcade.academy",
           install_requires=[
           'pyglet',
-          'pillow'
+          'pillow',
+          'pyglet-ffmpeg;platform_system=="Windows" or platform_system=="Darwin"'
           ],
           packages=["arcade",
                     "arcade.key",
