@@ -206,6 +206,16 @@ def quick_run(time_to_pause: Number):
     close_window()
 
 
+def exit():
+    """
+    Exit the application event loop.
+    This function is normally not needed as most application use a ``Window`` and
+    its ``close()`` method to exit the application. This is useful for unit tests
+    where the event loop needs to be used without opening a window.
+    """
+    pyglet.app.exit()
+
+
 def start_render():
     """
     Get set up to render. Required to be called before drawing anything to the
