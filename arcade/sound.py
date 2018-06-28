@@ -52,7 +52,7 @@ def _play(self):
 pyglet.media.codecs.base.Source.play = _play
 
 
-def load_sound(filename: typing.Union[str, pathlib.Path]):
+def load_sound(filename: typing.Union[str, pathlib.Path]) -> typing.Type[pyglet.media.StaticSource]:
     """
     Load a sound effect in memory.
 
