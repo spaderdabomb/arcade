@@ -56,14 +56,15 @@ def load_sound(filename: typing.Union[str, pathlib.Path]) -> typing.Type[pyglet.
     """
     Load a sound effect in memory.
 
-    You play a sound effect by calling its ``play`` method.
+    You play a sound effect by calling its ``play`` method or
+    the ``play_sound`` function.
 
     Use:
         >>> import arcade
         >>> sound = arcade.sound.load_sound("examples/sounds/laser1.ogg")
         >>> sound.volume = 0.8
         >>> p = sound.play()
-        >>> p.on_player_eos = arcade.exit
+        >>> p.push_handlers(on_player_eos=arcade.exit)
         >>> arcade.run()
     """
     s = pyglet.media.load(str(filename), streaming=False)
@@ -73,7 +74,7 @@ def load_sound(filename: typing.Union[str, pathlib.Path]) -> typing.Type[pyglet.
 
 def play_sound(sound: typing.Type[pyglet.media.Source]) -> typing.Type[pyglet.media.Player]:
     """
-    Play a sound.
+    Play a sound previously loaded with ``load_sound()``.
     """
     player = sound.play()
     return player
