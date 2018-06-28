@@ -71,8 +71,12 @@ def load_sound(filename: typing.Union[str, pathlib.Path]) -> typing.Type[pyglet.
     return s
 
 
-def play_sound(sound):
-    sound.play()
+def play_sound(sound: typing.Type[pyglet.media.Source]) -> typing.Type[pyglet.media.Player]:
+    """
+    Play a sound.
+    """
+    player = sound.play()
+    return player
 
 
 class _Player:
