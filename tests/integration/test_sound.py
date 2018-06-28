@@ -2,7 +2,6 @@ import pytest
 import sys
 import warnings
 from pathlib import Path
-import pyglet
 
 with warnings.catch_warnings(record=True) as w:
     import arcade
@@ -19,10 +18,13 @@ with warnings.catch_warnings(record=True) as w:
 class TestSounds:
 
     @pytest.mark.parametrize('sound_format', ('wav', 'mp3', 'ogg'))
-    def test_load_sound(self, sound_format):
+    def test_play_sound(self, sound_format):
         this_dir = Path(__file__).parent
         resources = this_dir / "../resources"
         sound_file = "laser1." + sound_format
         path = (resources / sound_file).resolve()
         sound = arcade.load_sound(path)
-        assert isinstance(sound, pyglet.media.StaticSource)
+        p = sound.play()
+        p.on_player_eos = arcade.exit
+        arcade.run()
+        # What assertion do we want to make?

@@ -26,11 +26,48 @@ class PlaysoundException(Exception):
     pass
 
 
+def _play(self):
+    """Method replacing pyglet Source.play method.
+
+    This method allows a ``source`` to have its own volume. When using
+    spontaneous players, their volume will be set accordingly.
+    """
+    from pyglet.media.player import Player
+    player = Player()
+    player.queue(self)
+    player.volume = self.volume
+    player.play()
+    pyglet.media.codecs.base.Source._players.append(player)
+
+    def _on_player_eos():
+        pyglet.media.codecs.base.Source._players.remove(player)
+        # There is a closure on player. To get the refcount to 0,
+        # we need to delete this function.
+        player.on_player_eos = None
+
+    player.on_player_eos = _on_player_eos
+    return player
+
+
+pyglet.media.codecs.base.Source.play = _play
+
+
 def load_sound(filename: typing.Union[str, pathlib.Path]):
     """
     Load a sound effect in memory.
+
+    You play a sound effect by calling its ``play`` method.
+
+    Use:
+        >>> import arcade
+        >>> sound = arcade.sound.load_sound("examples/sounds/laser1.ogg")
+        >>> sound.volume = 0.8
+        >>> p = sound.play()
+        >>> p.on_player_eos = arcade.exit
+        >>> arcade.run()
     """
     s = pyglet.media.load(str(filename), streaming=False)
+    s.volume = 1.0
     return s
 
 
