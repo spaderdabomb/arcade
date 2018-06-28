@@ -2,6 +2,7 @@ import pytest
 import sys
 import warnings
 from pathlib import Path
+import pyglet
 
 with warnings.catch_warnings(record=True) as w:
     import arcade
@@ -25,6 +26,7 @@ class TestSounds:
         path = (resources / sound_file).resolve()
         sound = arcade.load_sound(path)
         p = sound.play()
-        p.on_player_eos = arcade.exit
+        p.push_handlers(on_player_eos=arcade.exit)
         arcade.run()
-        # What assertion do we want to make?
+
+        assert pyglet.media.Source._players == []
