@@ -80,6 +80,53 @@ def play_sound(sound: typing.Type[pyglet.media.Source]) -> typing.Type[pyglet.me
     return player
 
 
+# This needs to be discussed. It's a first pass on a possible implementation of a
+# music player. It's a Singleton that wraps the pyglet.media.Player, hiding the
+# complexity by providing a simpler set of functionalities.
+class Music:
+    """
+    The Music player is responsible for playing the game music. Only one music can be
+    played at a time. For sound effects, use ``load_sound`` function and either the
+    ``play_sound`` function or the sound's ``play`` method.
+
+    The music will be streamed from the file which means the music could be very large
+    and all the music would not be loaded at once in memory.
+    """
+    def load(self, filename: typing.Union[str, pathlib.Path]):
+        """
+        Load a music from file and make it the first music to be played.
+        """
+        pass
+
+    def play(self):
+        """
+        Play the music previously loaded.
+        """
+        pass
+
+    def pause(self):
+        """
+        Suspends the music playing. Resume play by calling the ``play`` method again.
+        """
+        pass
+
+    def next_music(self):
+        """
+        Skip the current music.
+        """
+        pass
+
+    def queue(self, filename: typing.Union[str, pathlib.Path]):
+        """
+        Queue a music from file. It will be played after all queued music have been
+        played or the ``next_music`` method is called.
+        """
+        pass
+
+
+music = Music()
+
+
 class _Player:
     """
     Creates a media player from which a user can play audio. The player can handle multiple background tracks at once,
