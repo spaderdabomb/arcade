@@ -31,9 +31,12 @@ if __name__ == "__main__":
           url="http://arcade.academy",
           download_url="http://arcade.academy",
           install_requires=[
-          'pyglet',
+          'pyglet==1.4.1.dev',
           'pillow',
           'pyglet-ffmpeg;platform_system=="Windows" or platform_system=="Darwin"'
+          ],
+          dependency_links=[
+                "hg+https://bitbucket.org/pyglet/pyglet/default#egg=pyglet-1.4.1.dev"
           ],
           packages=["arcade",
                     "arcade.key",
@@ -61,7 +64,4 @@ if __name__ == "__main__":
                                    'examples/*.csv',
                                    'examples/*.tmx',
                                    'examples/sounds/*']},
-          data_files=[("lib/site-packages/arcade/Win32", ["Win32/avbin.dll"]),
-                      ("lib/site-packages/arcade/Win64", ["Win64/avbin.dll"]),
-                      ("lib/python3.6/site-packages/lib/site-packages/arcade/lib", ["lib/libavbin.10.dylib"])]
          )
