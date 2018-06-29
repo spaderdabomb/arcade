@@ -1,6 +1,4 @@
 import pytest
-import sys
-import warnings
 from pathlib import Path
 import pyglet
 
@@ -10,7 +8,7 @@ if not pyglet.media.have_ffmpeg():
 
 
 @pytest.mark.parametrize('sound_format', ('wav', 'mp3', 'ogg'))
-def test_play_sound(self, sound_format):
+def test_play_sound(sound_format):
     this_dir = Path(__file__).parent
     resources = this_dir / "../resources"
     sound_file = "laser1." + sound_format
