@@ -3,14 +3,7 @@ import sys
 import warnings
 from pathlib import Path
 import pyglet
-
-with warnings.catch_warnings(record=True) as w:
-    import arcade
-    if sys.platform not in ("win32", "cygwin", "darwin"):
-        assert len(w) == 1
-        assert "FFmpeg binaries were not found on the system." in str(w[-1].message)
-    else:
-        assert len(w) == 0
+import arcade
 
 
 @pytest.mark.parametrize("path", [
