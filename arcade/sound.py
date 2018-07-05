@@ -61,7 +61,9 @@ def load_sound(filename: typing.Union[str, pathlib.Path]) -> typing.Type[pyglet.
 
     Use:
         >>> import arcade
-        >>> sound = arcade.sound.load_sound("examples/sounds/laser1.ogg")
+        >>> from pathlib import Path
+        >>> sound_file = Path(__file__).parent / "examples/sounds/laser1.ogg"
+        >>> sound = arcade.sound.load_sound(sound_file)
         >>> sound.volume = 0.8
         >>> p = sound.play()
         >>> p.push_handlers(on_player_eos=arcade.exit)
@@ -122,6 +124,11 @@ class Music:
         played or the ``next_music`` method is called.
         """
         pass
+
+    def clear(self):
+        """
+        Clears the queue from any remaining music.
+        """
 
 
 music = Music()
