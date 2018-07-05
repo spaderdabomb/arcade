@@ -1,2 +1,2 @@
-Pyglet
+hg+https://bitbucket.org/pyglet/pyglet/default#egg=pyglet-1.4.1.dev
 Pillow

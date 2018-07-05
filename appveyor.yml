@@ -12,7 +12,8 @@ environment:
 
 
 install:
-  - "%PYTHON%\\Scripts\\pip.exe install wheel twine pillow pyglet coverage coveralls"
+  - "%PYTHON%\\Scripts\\pip.exe install wheel twine pillow coverage coveralls"
+  - "%PYTHON%\\Scripts\\pip.exe install hg+https://bitbucket.org/pyglet/pyglet/default#egg=pyglet-1.4.1.dev"
 
 build_script:
   - "%PYTHON%\\python.exe setup.py build sdist bdist bdist_wheel"
