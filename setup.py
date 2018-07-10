@@ -33,7 +33,7 @@ if __name__ == "__main__":
           install_requires=[
           'pyglet==1.4.1.dev',
           'pillow',
-          'pyglet-ffmpeg;platform_system=="Windows" or platform_system=="Darwin"'
+          'pyglet-ffmpeg'
           ],
           dependency_links=[
                 "hg+https://bitbucket.org/pyglet/pyglet/default#egg=pyglet-1.4.1.dev"

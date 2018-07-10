@@ -7,19 +7,15 @@ From https://github.com/TaylorSMarks/playsound/blob/master/playsound.py
 import os
 import typing
 import pathlib
-
 import pyglet
-import platform
 
-if platform.system() in ("Windows", "Darwin"):
-    import pyglet_ffmpeg
-    pyglet_ffmpeg.load_ffmpeg()
-else:
-    # On Linux
-    if not pyglet.media.have_ffmpeg():
-        import warnings
-        warnings.warn("FFmpeg binaries were not found on the system.")
-        # TODO: add more text explaining how to get the binaries on Linux
+
+import pyglet_ffmpeg
+pyglet_ffmpeg.load_ffmpeg()
+if not pyglet.media.have_ffmpeg():
+    import warnings
+    warnings.warn("FFmpeg binaries were not found on the system.")
+    # TODO: add more text explaining how to get the binaries on Linux
 
 
 class PlaysoundException(Exception):
