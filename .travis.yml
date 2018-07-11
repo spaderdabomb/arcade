@@ -15,7 +15,6 @@ before_script:
   - pip install sphinx coverage coveralls sphinx_rtd_theme setuptools
 
 install:
-  - pip install --process-dependency-links -r requirements.txt
   - pip install --process-dependency-links -r dev_requirements.txt
 
 script:
