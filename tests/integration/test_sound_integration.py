@@ -7,6 +7,7 @@ if not pyglet.media.have_ffmpeg():
     pytest.skip("No FFmpeg binaries found.", allow_module_level=True)
 
 
+@pytest.mark.not_ci
 @pytest.mark.parametrize('sound_format', ('wav', 'mp3', 'ogg'))
 def test_play_sound(sound_format):
     this_dir = Path(__file__).parent
