@@ -63,6 +63,8 @@ def load_sound(filename: typing.Union[str, pathlib.Path]) -> typing.Type[pyglet.
         >>> sound.volume = 0.8
         >>> p = sound.play()
         >>> p.push_handlers(on_player_eos=arcade.exit)
+        >>> # Ugly hack for Travis CI. Exit the loop after 1 sec.
+        >>> arcade.schedule(lambda dt: arcade.exit(), 1.0)
         >>> arcade.run()
     """
     s = pyglet.media.load(str(filename), streaming=False)
