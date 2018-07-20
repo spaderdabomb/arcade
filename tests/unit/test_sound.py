@@ -3,7 +3,6 @@ import sys
 import warnings
 from pathlib import Path
 import pyglet
-import arcade
 
 
 @pytest.mark.parametrize("path", [
@@ -12,6 +11,7 @@ import arcade
 ])
 def test_load_sound(path, mocker):
     """Load sound either from a string or a pathlib.Path"""
+    import arcade
 
     loader = mocker.patch("pyglet.media.load")
     loader.return_value = mocker.Mock(spec=pyglet.media.StaticSource, name="source")
@@ -25,6 +25,8 @@ def test_load_sound(path, mocker):
 
 
 def test_play_sound(mocker):
+    import arcade
+
     source = mocker.Mock(spec=pyglet.media.Source, name="source")
     source.play.return_value = mocker.Mock(spec=pyglet.media.Player, name="player")
 
