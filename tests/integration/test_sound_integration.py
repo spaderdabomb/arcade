@@ -2,7 +2,6 @@ import pytest
 from pathlib import Path
 import pyglet
 
-import arcade
 if not pyglet.media.have_ffmpeg():
     pytest.skip("No FFmpeg binaries found.", allow_module_level=True)
 
@@ -10,6 +9,7 @@ if not pyglet.media.have_ffmpeg():
 @pytest.mark.not_ci
 @pytest.mark.parametrize('sound_format', ('wav', 'mp3', 'ogg'))
 def test_play_sound(sound_format):
+    import arcade
     this_dir = Path(__file__).parent
     resources = this_dir / "../resources"
     sound_file = "laser1." + sound_format
