@@ -445,6 +445,11 @@
   </tile>
   <tile id="1">
    <image width="128" height="128" source="images/items/coinGold.png"/>
+   <objectgroup draworder="index">
+    <object id="1" x="53.25" y="32.875">
+     <polygon points="0,0 20.25,-0.375 41,17.875 42.5,41.25 28.125,58.375 17.125,63 4.25,62.875 -12.875,52.875 -21.5,35.625 -22.625,21.5 -11.375,6.875"/>
+    </object>
+   </objectgroup>
   </tile>
   <tile id="2">
    <image width="128" height="128" source="images/items/coinSilver.png"/>

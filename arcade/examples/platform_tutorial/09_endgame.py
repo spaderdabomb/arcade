@@ -116,10 +116,10 @@ class MyGame(arcade.Window):
 
         # -- Walls
         # Grab the layer of items we can't move through
-        map_array = my_map.layers_int_data[platforms_layer_name]
+        # map_array = my_map.layers_int_data[platforms_layer_name]
 
         # Calculate the right edge of the my_map in pixels
-        self.end_of_map = len(map_array[0]) * GRID_PIXEL_SIZE
+        # self.end_of_map = len(map_array[0]) * GRID_PIXEL_SIZE
 
         # -- Background
         self.background_list = arcade.generate_sprites(my_map, background_layer_name, TILE_SCALING)
@@ -139,12 +139,12 @@ class MyGame(arcade.Window):
         # -- Don't Touch Layer
         self.dont_touch_list = arcade.generate_sprites(my_map, dont_touch_layer_name, TILE_SCALING)
 
-        self.end_of_map = (len(map_array[0]) - 1) * GRID_PIXEL_SIZE
+        self.end_of_map = my_map.map_size.x * GRID_PIXEL_SIZE
 
         # --- Other stuff
         # Set the background color
-        if my_map.backgroundcolor:
-            arcade.set_background_color(my_map.backgroundcolor)
+        if my_map.background_color:
+            arcade.set_background_color(my_map.background_color)
 
         # Create the 'physics engine'
         self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite,
