@@ -7,7 +7,7 @@ def test_load():
     file_path = os.path.dirname(os.path.abspath(__file__))
     os.chdir(file_path)
 
-    file_name = "../../arcade/examples/platform_tutorial/test_map_1.tmx"
+    file_name = "test_data/test_map_1.tmx"
     tile_map = arcade.read_tiled_map(file_name)
 
     assert isinstance(tile_map, pytiled_parser.objects.TileMap)

@@ -84,14 +84,13 @@ def generate_sprites(map_object: pytiled_parser.objects.TileMap,
 
             my_sprite = Sprite(tmx_file, scaling)
             my_sprite.right = column_index * (map_object.tile_size[0] * scaling)
-            my_sprite.top = (map_object.map_size.y - row_index) * (map_object.tile_size[1] * scaling)
-            if tile.hit_box is not None:
-                print("hi")
+            my_sprite.top = (map_object.map_size.x - row_index) * (map_object.tile_size[1] * scaling)
             # print(tile.image.source, my_sprite.center_x, my_sprite.center_y)
-            # if tile_info.points is not None:
-            #     my_sprite.set_points(tile_info.points)
+            if tile.hitboxes is not None and len(tile.hitboxes) > 0:
+                if len(tile.hitboxes) > 1:
+                    print(f"Warning, only one hit box supported for tile with image {tile.image.source}.")
+                hitbox = tile.hitboxes[0]
+
             sprite_list.append(my_sprite)
 
     return sprite_list
-
-
