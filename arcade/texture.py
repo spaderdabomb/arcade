@@ -402,6 +402,7 @@ def load_spritesheet(file_name: str,
         start_y = sprite_height * row
         image = source_image.crop((start_x, start_y, start_x + sprite_width, start_y + sprite_height))
         texture = Texture(f"{file_name}-{sprite_no}", image)
+        texture.hit_box_points = calculate_points(image)
         texture_list.append(texture)
 
     return texture_list
